@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="jpacman-framework">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../.m2/repository/junit/junit/4.10/junit-4.10.jar"/>
+        <pathelement location="../../.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+        <pathelement location="../../.m2/repository/org/mockito/mockito-core/1.9.5-rc1/mockito-core-1.9.5-rc1.jar"/>
+        <pathelement location="../../.m2/repository/org/objenesis/objenesis/1.0/objenesis-1.0.jar"/>
+        <pathelement location="../../.m2/repository/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar"/>
+    </path>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
+    <path id="jpacman-framework.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="target/test-classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="../../Downloads/google-collections-1.0.jar/google-collections-1.0.jar"/>
+    </path>
+    <path id="run.BoardTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.GameTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.java.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.jpacman-framework.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.MainUI.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.MainUISmokeTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.MoveGhostStoryTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.New_configuration.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.SpriteTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.WithinBordersTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.org.jpacman.test.framework.model.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.GamePlayTest.classpath">
+        <path refid="jpacman-framework.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+                <exclude name="**"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/resources">
+                <exclude name="**/*.java"/>
+                <exclude name="**"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <src path="src/main/resources"/>
+            <exclude name="**"/>
+            <classpath refid="jpacman-framework.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <src path="src/test/resources"/>
+            <exclude name="**"/>
+            <classpath refid="jpacman-framework.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="BoardTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.model.BoardTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.BoardTest.classpath"/>
+        </junit>
+    </target>
+    <target name="GameTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.model.GameTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.GameTest.classpath"/>
+        </junit>
+    </target>
+    <target name="java">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.accept.AbstractAcceptanceTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.accept.MoveGhostStoryTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.factory.FactoryIntegrationTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.BoardTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.BoardTileAtTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.FactoryExceptionTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.GamePlayTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.GameTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.PointManagerTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.SpriteTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.WithinBordersTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.ui.ButtonPanelTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.ui.MainUISmokeTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.view.ImageLoaderTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.java.classpath"/>
+        </junit>
+    </target>
+    <target name="jpacman-framework">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.accept.AbstractAcceptanceTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.accept.MoveGhostStoryTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.factory.FactoryIntegrationTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.BoardTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.BoardTileAtTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.FactoryExceptionTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.GamePlayTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.GameTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.PointManagerTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.SpriteTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.WithinBordersTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.ui.ButtonPanelTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.ui.MainUISmokeTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.view.ImageLoaderTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.jpacman-framework.classpath"/>
+        </junit>
+    </target>
+    <target name="MainUI">
+        <java classname="org.jpacman.framework.ui.MainUI" failonerror="true" fork="yes">
+            <classpath refid="run.MainUI.classpath"/>
+        </java>
+    </target>
+    <target name="MainUISmokeTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.ui.MainUISmokeTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MainUISmokeTest.classpath"/>
+        </junit>
+    </target>
+    <target name="MoveGhostStoryTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.accept.MoveGhostStoryTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MoveGhostStoryTest.classpath"/>
+        </junit>
+    </target>
+    <target name="New_configuration">
+        <java classname="" failonerror="true" fork="yes">
+            <classpath refid="run.New_configuration.classpath"/>
+        </java>
+    </target>
+    <target name="SpriteTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.model.SpriteTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.SpriteTest.classpath"/>
+        </junit>
+    </target>
+    <target name="WithinBordersTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.model.WithinBordersTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.WithinBordersTest.classpath"/>
+        </junit>
+    </target>
+    <target name="org.jpacman.test.framework.model">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.model.BoardTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.BoardTileAtTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.FactoryExceptionTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.GamePlayTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.GameTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.PointManagerTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.SpriteTest" todir="${junit.output.dir}"/>
+            <test name="org.jpacman.test.framework.model.WithinBordersTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.org.jpacman.test.framework.model.classpath"/>
+        </junit>
+    </target>
+    <target name="GamePlayTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.jpacman.test.framework.model.GamePlayTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.GamePlayTest.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
